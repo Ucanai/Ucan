@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UCAN - You Can</title>
+<style>
+*{box-sizing:border-box;font-family:system-ui}
+body{margin:0;background:#0f0f14;color:#fff;display:flex;flex-direction:column;height:100vh}
+header{padding:12px;background:#1a1a24;display:flex;justify-content:space-between}
+header b{font-size:20px} header b span{color:#00ff88}
+#keys{padding:10px;background:#1a1a24;display:flex;gap:6px;flex-wrap:wrap}
+#keys input{flex:1;min-width:120px;padding:10px;border-radius:8px;border:1px solid #333;background:#111;color:#fff}
+button{padding:12px;border:none;border-radius:10px;background:#00ff88;color:#000;font-weight:700}
+#main{flex:1;display:flex;overflow:hidden}
+#chat{width:40%;display:flex;flex-direction:column;border-right:1px solid #333}
+#msgs{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+.msg{padding:10px;border-radius:12px;max-width:92%;font-size:14px;line-height:1.5}
+.me{background:#00ff88;color:#000;align-self:flex-end}
+.ai{background:#222;align-self:flex-start}
+#in{display:flex;gap:6px;padding:10px;border-top:1px solid #333}
+#in input{flex:1;padding:12px;border-radius:10px;border:1px solid #333;background:#111;color:#fff}
+#prev{flex:1;display:flex;flex-direction:column}
+#bar{padding:8px;background:#1a1a24;font-size:13px;display:flex;justify-content:space-between}
+iframe{flex:1;border:none;background:#fff}
+@media(max-width:700px){#main{flex-direction:column}#chat{width:100%;height:45%}#prev{height:55%}}
+</style>
+</head>
+<body>
+<header><b>UCAN <span>• You Can</span></b><small>Bolo, Ban Gaya</small></header>
+<div id="keys">
+<input id="k1" placeholder="1. Gemini Key">
+<input id="k2" placeholder="2. Groq Key">
+<input id="k3" placeholder="3. OpenRouter Key">
+<button onclick="saveK()">Save</button>
+</div>
+<div id="main">
+<div id="chat">
+<div id="msgs"><div class="msg ai">Assalam-o-Alaikum! Main UCAN hun. Bolo kya banana hai? Misal: Mujhe Todo App banao. Mic dabao, bol ke bhi bana sakte ho.</div></div>
+<div id="in"><button onclick="voice()">🎤</button><input id="p" placeholder="Bolo UCAN ko..." onkeypress="if(event.key==='Enter')send()"><button onclick="send()">Banao</button></div>
+</div>
+<div id="prev"><div id="bar"><span id="st">Preview Yahan Dikhega</span><button onclick="dl()">App Download</button></div><iframe id="fr"></iframe></div>
+</div>
+<script>
+let g=localStorage.getItem('u1')||'',gr=localStorage.getItem('u2')||'',o=localStorage.getItem('u3')||'';
+k1.value=g;k2.value=gr;k3.value=o;
+function saveK(){g=k1.value.trim();gr=k2.value.trim();o=k3.value.trim();localStorage.setItem('u1',g);localStorage.setItem('u2',gr);localStorage.setItem('u3',o);alert('3 Dimagh Save Ho Gaye! Backup ON');}
+function add(t,w){let d=document.createElement('div');d.className='msg '+w;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=99999;}
+function voice(){let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('Chrome use karo');return;}let r=new SR();r.lang='ur-PK';r.onresult=e=>{p.value=e.results[0][0].transcript;send();};r.start();}
+async function send(){let pr=p.value.trim();if(!pr)return;p.value='';add(pr,'me');st.textContent='UCAN soch raha hai...';let h=await ask(pr);if(h){fr.srcdoc=h;localStorage.setItem('ul',h);add('Ho gaya! Right side me dekh lo. Change chahiye to bolo - Color red kar do.','ai');st.textContent='Live Preview - Ban Gaya';}else{add('Teeno dimagh busy hain, dobara bolo.','ai');}}
+async function ask(prompt){
+let sys="You are UCAN. Output ONLY one complete HTML file. No markdown, no explanation. Single file, beautiful, mobile-friendly app for: ";
+try{if(g){let r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+g,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:sys+prompt}]}]})});let j=await r.json();let t=j.candidates?.[0]?.content?.parts?.[0]?.text||'';if(t)return clean(t);}}catch(e){}
+try{if(gr){let r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+gr},body:JSON.stringify({model:'llama-3.3-70b-versatile',messages:[{role:'user',content:sys+prompt}]})});let j=await r.json();let t=j.choices?.[0]?.message?.content||'';if(t)return clean(t);}}catch(e){}
+try{if(o){let r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+o},body:JSON.stringify({model:'openai/gpt-4o-mini',messages:[{role:'user',content:sys+prompt}]})});let j=await r.json();let t=j.choices?.[0]?.message?.content||'';if(t)return clean(t);}}catch(e){}
+return null;
+}
+function clean(t){t=t.replace(/```html/g,'').replace(/```/g,'').trim();let s=t.indexOf('<!DOCTYPE');if(s>-1)t=t.slice(s);return t;}
+function dl(){let h=localStorage.getItem('ul');if(!h){alert('Pehle kuch banao');return;}let b=new Blob([h],{type:'text/html'});let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='ucan-app.html';a.click();}
+window.onload=()=>{let l=localStorage.getItem('ul');if(l)fr.srcdoc=l;}
+</script>
+</body>
+</html>
