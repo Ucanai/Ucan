@@ -2,168 +2,96 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>HAWA - UCAN v1.0.0</title>
-<!-- HAWA UCAN v1.0.0 - OFFICIAL MARKET FIRST RELEASE - NOT LAUNCHED YET -->
-<!-- NAAM: HAWA upar, UCAN neeche chota - SPARK NIKAL DIYA - META ISSUE KHATAM -->
-<!-- SIZE: 15 MB - BRAIN ANDAR - LIBRARY BAHAR - EXTREME TESTED -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAWA UCAN - Global AI</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system}
-body{background:#000;display:flex;justify-content:center}
-.phone{width:100%;max-width:420px;min-height:100vh;background:#0f0f12;color:#fff;padding:14px 14px 20px;display:flex;flex-direction:column}
-.top{display:flex;justify-content:space-between;align-items:flex-start}
-.logo-row{display:flex;gap:12px;align-items:center}
-.brain{width:68px;height:68px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 30%,#0a2a3a,#000);border:1px solid #1e3a4a;display:grid;place-items:center;overflow:hidden;position:relative}
-.brain::before{content:"🧠";font-size:34px;filter:drop-shadow(0 0 8px #00e5ff);z-index:2}
-.brain::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,#00e5ff88 1.5px,transparent 1.5px),radial-gradient(circle at 80% 30%,#2ecc7188 1.5px,transparent 1.5px),radial-gradient(circle at 30% 80%,#00e5ff88 1.5px,transparent 1.5px),radial-gradient(circle at 75% 75%,#2ecc7188 1.5px,transparent 1.5px);background-size:20px 20px}
-h1{font-size:38px;line-height:0.9;letter-spacing:1px;font-weight:900}
-h1 span{display:block;font-size:18px;letter-spacing:8px;color:#7a8a9a;font-weight:600;margin-top:4px}
-.badge{font-size:11px;border:1px solid #2ecc71;color:#2ecc71;padding:6px 10px;border-radius:20px;white-space:nowrap}
-.label{color:#9a8aa5;font-size:14px;margin:22px 0 10px}
-.lib{background:#17171c;border:1px solid #2a2a30;border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.lib b{font-size:14px}
-.lib small{color:#2ecc71;font-size:11px}
-.dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;display:inline-block;box-shadow:0 0 8px #2ecc71}
-.lib-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-.lib-card{background:#17171c;border:1px solid #2a2a30;border-radius:12px;padding:12px 4px;text-align:center;cursor:pointer}
-.lib-card i{font-size:20px;display:block;font-style:normal}
-.lib-card b{font-size:10px;color:#aaa;font-weight:500}
-.cat{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.cat div{background:#17171c;border:1px solid #2a2a30;border-radius:12px;padding:10px 2px;text-align:center;cursor:pointer;font-size:11px}
-.cat div span{font-size:18px;display:block;margin-bottom:4px}
-.cat div:active{background:#1a2e22;border-color:#2ecc71}
-.real{margin-top:20px}
-.real h2{font-size:21px}
-.real p{color:#2ecc71;font-size:13px;margin-top:3px}
-.today{background:#17171c;border:1px solid #2a2a30;border-radius:14px;padding:14px;margin-top:12px}
-.today h3{color:#9a8aa5;font-size:14px;font-weight:500;margin-bottom:10px}
-.today-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.tcard{background:#1e1e24;border:1px solid #2a2a30;border-radius:10px;padding:10px;cursor:pointer}
-.tcard b{font-size:11px;line-height:1.3;display:block}
-.tcard p{font-size:10px;color:#888;margin-top:6px;line-height:1.4}
-.bar{display:flex;gap:8px;margin-top:16px;align-items:center}
-.bar input{flex:1;background:#17171c;border:1px solid #2a2a30;color:#fff;padding:14px 16px;border-radius:30px;outline:none}
-.plus{width:42px;height:42px;border-radius:50%;background:#222;color:#888;border:0;font-size:22px;cursor:pointer}
-.mic{width:52px;height:52px;border-radius:50%;background:#6ee787;color:#000;border:0;font-size:22px;box-shadow:0 0 18px #6ee78788;cursor:pointer}
-#out{background:#0a0a0a;border:1px solid #222;border-radius:12px;padding:12px;margin-top:10px;font-size:12px;line-height:1.7;white-space:pre-wrap;max-height:240px;overflow:auto;display:none}
-.queue{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.queue span{background:#1a2e22;border:1px solid #2ecc71;color:#2ecc71;font-size:11px;padding:4px 8px;border-radius:20px}
-.queue span.done{background:#2ecc71;color:#000}
-.queue span.fail{background:#ff4444;color:#fff;border-color:#ff4444}
-.progress{height:6px;background:#222;border-radius:10px;margin-top:10px;overflow:hidden;display:none}
-.progress i{display:block;height:100%;background:#2ecc71;width:0%;transition:0.3s}
-.ver{text-align:center;color:#444;font-size:10px;margin-top:12px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,sans-serif}
+body{background:#fff;color:#111;height:100vh;display:flex;flex-direction:column}
+header{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee}
+.logo{display:flex;align-items:center;gap:10px}
+.logo b{font-size:19px;letter-spacing:1px}
+.logo span{font-size:13px;color:#888;display:block;letter-spacing:3px}
+.pill{font-size:12px;background:#f0f0f0;padding:6px 10px;border-radius:20px;color:#555}
+#chat{flex:1;overflow-y:auto;padding:20px;max-width:800px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.msg{max-width:90%;padding:14px 16px;border-radius:18px;line-height:1.6;font-size:15px;white-space:pre-wrap}
+.user{background:#111;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.ai{background:#f5f5f5;align-self:flex-start;border-bottom-left-radius:4px}
+.inputWrap{max-width:800px;width:100%;margin:0 auto;padding:12px 16px 16px}
+.inputBox{display:flex;gap:10px;align-items:center;background:#f5f5f5;border:1px solid #e5e5e5;border-radius:28px;padding:6px 6px 6px 18px}
+.inputBox input{flex:1;border:none;background:transparent;outline:none;font-size:15px;padding:10px 0}
+.inputBox button{width:44px;height:44px;border-radius:50%;border:none;background:#111;color:#fff;font-size:18px;cursor:pointer}
+footer{text-align:center;font-size:11px;color:#aaa;padding-bottom:10px}
 </style>
 </head>
 <body>
-<div class="phone">
-  <div class="top">
-    <div class="logo-row">
-      <div class="brain" title="HAWA UCAN Logo Brain - Lines + Dots"></div>
-      <h1>HAWA<span>UCAN</span></h1>
-    </div>
-    <div class="badge">15 MB • Local</div>
-  </div>
-  <div class="label">Connected Library</div>
-  <div class="lib"><b>Library connected to internet <span class="dot"></span></b><small>Online • Synced now</small></div>
-  <div class="lib-grid">
-    <div class="lib-card" onclick="go('Research from Common Crawl')"><i>🟠</i><b>Common Crawl</b></div>
-    <div class="lib-card" onclick="go('Find code on GitHub')"><i>🐙</i><b>GitHub</b></div>
-    <div class="lib-card" onclick="go('Find npm package')"><i style="color:#e33">npm</i><b>npm</b></div>
-    <div class="lib-card" onclick="go('Find model on Hugging Face')"><i>🤗</i><b>Hugging Face</b></div>
-  </div>
-  <div class="label">Categories</div>
-  <div class="cat" id="cats"></div>
-  <div class="real"><h2>Real Super AI • 15 MB</h2><p>Fast • Private • Offline-ready</p></div>
-  <div class="today"><h3>Today</h3><div class="today-grid">
-    <div class="tcard" onclick="go('Research quantum transformer models and make PDF')"><b>✨ Research quantum transformer models</b><p>Summarize latest papers from Common Crawl</p></div>
-    <div class="tcard" onclick="go('Generate a 3D model of a turbine and make video')"><b>🖼️ Generate a 3D model of a turbine</b><p>Export to OBJ / GLB</p></div>
-    <div class="tcard" onclick="go('Write a Python script for data scraping and make bot')"><b>📄 Write a Python script for data scraping</b><p>Using requests + BeautifulSoup</p></div>
-  </div></div>
-  <div id="out"></div>
-  <div class="progress" id="prog"><i id="progBar"></i></div>
-  <div class="queue" id="queue"></div>
-  <div class="bar">
-    <input id="q" placeholder="Ask anything... U CAN - Video + PDF + Image sab ek saath bolo">
-    <button class="plus" onclick="document.getElementById('q').focus()">+</button>
-    <button class="mic" onclick="ask()">🎤</button>
-  </div>
-  <div class="ver">HAWA UCAN v1.0.0 • First Release • 15 MB • U CAN DO ANYTHING</div>
+
+<header>
+<div class="logo"><div style="font-size:26px">🧠</div><div><b>HAWA UCAN</b><span>GLOBAL AI</span></div></div>
+<div class="pill">v1.2 • Global</div>
+</header>
+
+<div id="chat">
+<div class="msg ai">Hello! I'm HAWA UCAN — a global AI for creators.
+
+Ask me anything: research, coding, writing, video ideas, image prompts, business, or study. I will answer directly in English.</div>
 </div>
 
+<div class="inputWrap">
+<div class="inputBox">
+<input id="inp" placeholder="Ask anything..." onkeydown="if(event.key==='Enter') send()">
+<button onclick="send()">↑</button>
+</div>
+</div>
+<footer>HAWA UCAN v1.2 • U CAN DO ANYTHING</footer>
+
 <script>
-/* HAWA UCAN v1.0.0 - MARKET FIRST RELEASE - EXTREME TESTED */
-const HAWA_UCAN = { name:"HAWA", sub:"UCAN", tagline:"U CAN DO ANYTHING", version:"1.0.0", size:"15 MB", status:"First Release - Not launched yet" };
+let chat=document.getElementById('chat');
+let inp=document.getElementById('inp');
 
-const CATS = [["🔍","Research"],["🖼️","Image"],["🎞️","GIF"],["📄","PDF"],["🎬","Video"],["🎥","Video"],["💻","Coding"],["🧊","3D"],["💻","Coding"],["📱","App"],["🌐","Website"],["🤖","Bot"]];
-const catsEl=document.getElementById("cats");
-CATS.forEach(([icon,name])=>{ const d=document.createElement("div"); d.innerHTML=`<span>${icon}</span>${name}`; d.onclick=()=>go(name); catsEl.appendChild(d); });
+function addMsg(t,who){
+  let d=document.createElement('div');
+  d.className='msg '+who; d.innerText=t;
+  chat.appendChild(d); chat.scrollTop=chat.scrollHeight;
+}
 
-const BRAIN = {
-  thinkAll(text){
-    if(text===null||text===undefined) return ["chat"];
-    if(typeof text!=="string") text=String(text);
-    if(!text.trim()) return ["chat"];
-    if(text.length>5000) text=text.slice(0,5000);
-    const t=text.toLowerCase();
-    const tasks=[];
-    if(t.includes("research")||t.includes("quantum")||t.includes("dhoond")||t.includes("search")||t.includes("reserch")) tasks.push("research");
-    if(t.includes("image")||t.includes("photo")||t.includes("picture")) tasks.push("image");
-    if(t.includes("gif")) tasks.push("gif");
-    if(t.includes("pdf")||t.includes("bna do")) tasks.push("pdf");
-    if(t.includes("video")||t.includes("kaato")||t.includes("kaat")||t.includes("kat do")) tasks.push("video");
-    if(t.includes("3d")) tasks.push("3d");
-    if(t.includes("code")||t.includes("python")||t.includes("script")||t.includes("coding")) tasks.push("code");
-    if(t.includes("app")) tasks.push("app");
-    if(t.includes("website")||t.includes("web")||t.includes("site")) tasks.push("website");
-    if(t.includes("bot")) tasks.push("bot");
-    if(t.includes("voice")||t.includes("awaz")||t.includes("audio")||t.includes("bol")) tasks.push("voice");
-    if(t.includes("translate")) tasks.push("translate");
-    if(tasks.length===0) tasks.push("chat");
-    return [...new Set(tasks)];
+function getReply(q){
+  let s=q.toLowerCase();
+  if(s.includes('who are you')||s.includes('your name')||s.includes('what are you')){
+    return "I'm HAWA UCAN — a global AI assistant for creators.\n\nI can help with research, coding, writing, video scripts, image prompts, business ideas, and learning.\n\nWhat do you want to create today?";
   }
-};
-
-const HAWA = {
-  LIBRARY:{ ffmpeg:"https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.min.js", threejs:"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js", react:"https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js", pyodide:"https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js", commoncrawl:"https://index.commoncrawl.org/CC-MAIN-2024-10-index?url=", github:"https://api.github.com/search/repositories?q=", npm:"https://registry.npmjs.org/", pypi:"https://pypi.org/pypi/", huggingface:"https://huggingface.co/api/models?search=" },
-  async fetchTool(task){
-    const map={video:"ffmpeg","3d":"threejs",app:"react",code:"pyodide",research:"commoncrawl",bot:"github",image:"huggingface",pdf:"pyodide",gif:"ffmpeg",website:"react",voice:"pyodide",translate:"huggingface",chat:"commoncrawl"};
-    const tool=map[task]||"commoncrawl";
-    log(`  → HAWA UCAN la raha hai: ${tool} - ${task} ke liye...`);
-    try{ localStorage.setItem("hawa-ucan-learn-"+task, this.LIBRARY[tool]); }catch(e){}
-    for(let i=0;i<3;i++){ try{ await new Promise(r=>setTimeout(r,300)); break; }catch(e){ if(i===2) log(`  ⚠️ ${task} me network slow - phir try kar raha hun`); } }
-    return tool;
-  },
-  async doWork(task,input){
-    const w={ research:`Research kiya: "${input}" - Common Crawl + GitHub + HF se latest papers, summary banaya.`, image:`Image banaya: "${input}" - HF model se.`, gif:`GIF banaya: "${input}" - FFmpeg se.`, pdf:`PDF banaya: "${input}" - Download ready.`, video:`Video kaata/banaya: "${input}" - FFmpeg.wasm se.`, "3d":`3D model banaya: "${input}" - Three.js - OBJ/GLB ready.`, code:`Code likha: "${input}" - Python/JS - Run karke check kiya.`, app:`App banaya: "${input}" - React se.`, website:`Website banaya: "${input}" - HTML+Tailwind.`, bot:`Bot banaya: "${input}" - Deploy ready.`, voice:`Voice banaya: "${input}" - TTS se.`, translate:`Translate kiya: "${input}"`, chat:`Jawab: "${input}" - U CAN bhai - Bolo - Video? PDF? Image? App? Bot? Sab kar dunga.` };
-    return w[task]||w.chat;
-  },
-  async run(input){
-    if(this._busy){ log("⏳ Ruko bhai - Pehla kaam chal raha hai - Uske baad tumhara hoga..."); return; }
-    this._busy=true;
-    try{
-      const tasks=BRAIN.thinkAll(input);
-      const out=document.getElementById("out"), prog=document.getElementById("prog"), progBar=document.getElementById("progBar"), queueEl=document.getElementById("queue");
-      out.style.display="block"; prog.style.display="block";
-      out.textContent=`HAWA UCAN v1.0.0...\nTumne bola: "${String(input).slice(0,200)}"\nBRAIN ne samjha: ${tasks.length} kaam\nQueue: ${tasks.join(" → ")}\n`;
-      queueEl.innerHTML=""; tasks.forEach(t=>{ const s=document.createElement("span"); s.textContent=t; s.id="q-"+t; queueEl.appendChild(s); });
-      let done=0;
-      for(let task of tasks){
-        log(`\n[${done+1}/${tasks.length}] Kar raha hun: ${task.toUpperCase()}...`);
-        try{ await this.fetchTool(task); const r=await this.doWork(task,input); log(`✅ HO GAYA - ${task}: ${r}`); const el=document.getElementById("q-"+task); if(el) el.classList.add("done"); }
-        catch(e){ log(`❌ FAIL - ${task}: ${e.message} - Agla kaam jaari...`); const el=document.getElementById("q-"+task); if(el) el.classList.add("fail"); }
-        done++; progBar.style.width=Math.round((done/tasks.length)*100)+"%";
-      }
-      log(`\n🎉 SAB HO GAYA BHAI - ${done}/${tasks.length} done - HAWA UCAN v1.0.0 ne kar diya - U CAN!`);
-      setTimeout(()=>{ progBar.style.width="0%"; },1500);
-    } finally { this._busy=false; }
+  if(s.includes('python')||s.includes('code')||s.includes('javascript')||s.includes('html')){
+    return "Here is a clean, working example:\n\nPython — Data Scraping:\n\nimport requests\nfrom bs4 import BeautifulSoup\n\nurl = 'https://example.com'\nhtml = requests.get(url).text\nsoup = BeautifulSoup(html, 'html.parser')\nfor tag in soup.find_all('h2'):\n    print(tag.text)\n\nTell me your exact website or task, and I will write the exact code for it.";
   }
-};
-function log(t){ const o=document.getElementById("out"); o.textContent+="\n"+t; o.scrollTop=o.scrollHeight; }
-function go(t){ document.getElementById("q").value=t; HAWA.run(t); }
-function ask(){ const q=document.getElementById("q"); if(!q.value.trim()) return; const v=q.value; q.value=""; HAWA.run(v); }
-document.getElementById("q").addEventListener("keydown",e=>{ if(e.key==="Enter") ask(); });
-log("HAWA UCAN v1.0.0 ready hai bhai...\nUpar HAWA - Neeche UCAN - Brain logo left me\nU CAN DO ANYTHING - Ek kaam ya 12 kaam ek saath - Sab honge.");
+  if(s.includes('quantum')||s.includes('transformer')||s.includes('research')||s.includes('paper')){
+    return "Quantum Transformer Models — Explained Simply:\n\n1. A normal Transformer uses attention to understand text.\n2. A Quantum Transformer uses quantum circuits and qubits to process many possibilities at once.\n3. It is still in research — IBM and Google are working on it.\n4. It could be faster for complex problems like drug discovery and optimization.\n\nDo you want a summary, a presentation outline, or a full paper explanation?";
+  }
+  if(s.includes('image')||s.includes('prompt')||s.includes('picture')||s.includes('thumbnail')){
+    return "Best Image Prompt for you:\n\n\"Cinematic studio portrait, soft neon light, high detail, professional photography, 4k\"\n\nTell me what image you want — logo, thumbnail, poster, or portrait — and I will create a perfect prompt for it.";
+  }
+  if(s.includes('video')||s.includes('script')||s.includes('youtube')||s.includes('reel')){
+    return "Video Script — 30 Second Hook Formula:\n\n0-3s: Start with a strong hook — \"Stop doing this mistake...\"\n3-15s: Show the problem\n15-25s: Show the solution\n25-30s: Call to action — \"Follow for Part 2\"\n\nTell me your video topic and I will write the full script.";
+  }
+  if(s.includes('business')||s.includes('startup')||s.includes('earn')||s.includes('money')){
+    return "3 Business Ideas for Creators in 2026:\n\n1. AI Content Studio — Make videos/posts for small brands.\n2. Digital Products — Sell templates, prompts, and courses.\n3. Automation Service — Help businesses automate with AI.\n\nWhich one interests you? I can make a full plan for it.";
+  }
+  if(s.includes('hello')||s.includes('hi')||s.includes('hey')){
+    return "Hello! How are you today?\n\nWhat can I help you with — coding, research, writing, or an idea?";
+  }
+  if(s.includes('motivat')||s.includes('tired')||s.includes('sad')){
+    return "You are already doing more than most people. You built a live website — that takes courage.\n\nJust do one small task today, for 10 minutes. Momentum will come. You can do anything.";
+  }
+  if(s.includes('3d')||s.includes('turbine')||s.includes('model')){
+    return "3D Turbine Model — Plan:\n\n- 3 blades, metallic finish\n- Central hub + rotating shaft\n- Export as OBJ / GLB for Blender or Three.js\n\nDo you want Blender steps or Three.js code?";
+  }
+  return "Good question.\n\nTo give you the best answer, tell me:\n1. Do you want a summary, a guide, or code?\n2. What is it for — project, video, or learning?\n\nTell me and I will answer directly.";
+}
+
+function send(){
+  let t=inp.value.trim(); if(!t) return;
+  addMsg(t,'user'); inp.value='';
+  // NO fake loading, NO "searching" message - direct answer
+  addMsg(getReply(t),'ai');
+}
 </script>
 </body>
 </html>
